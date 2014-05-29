@@ -1,0 +1,8 @@
+*.a
+*.so
+*.so.*
+CMakeFiles
+*.cmake
+CMakeCache.txt
+Makefile
+ffwd-client-send/ffwd-client-send

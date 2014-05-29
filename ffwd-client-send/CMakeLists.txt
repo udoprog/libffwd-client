@@ -1,0 +1,21 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8.11)
+
+SET(Boost_USE_STATIC_LIBS ON)
+SET(Boost_USE_MULTITHREADED ON)
+SET(Boost_USE_STATIC_RUNTIME ON)
+FIND_PACKAGE(Boost COMPONENTS program_options)
+
+SET(CMAKE_PROJECT_NAME "ffwd-client-send")
+
+SET(FFWD_CLIENT_SEND_SOURCES
+    ffwd-client-send.cpp
+)
+
+if (Boost_FOUND)
+    INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
+    ADD_EXECUTABLE(ffwd-client-send ${FFWD_CLIENT_SEND_SOURCES})
+    TARGET_LINK_LIBRARIES(ffwd-client-send ffwd-client ${Boost_LIBRARIES})
+    INSTALL(TARGETS ffwd-client-send
+        RUNTIME DESTINATION bin
+    )
+endif()
